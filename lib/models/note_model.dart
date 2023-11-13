@@ -6,13 +6,13 @@ part 'note_model.g.dart';
 class NoteModel extends HiveObject {
   //Field numbers can be in the range 0-255.
   @HiveField(0)
-  final String title;
+   String title;
   @HiveField(1)
-  final String content;
+   String content;
   @HiveField(2)
-  final String date;
+  final String date; // can't be changed
   @HiveField(3)
-  final int color;
+   int color;
 
   NoteModel(
       {required this.title,
