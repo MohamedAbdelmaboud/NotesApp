@@ -55,22 +55,7 @@ class _AddNoteFromState extends State<AddNoteFrom> {
                 builder: (context, state) {
                   return CustomButton(
                     onPressed: () {
-                      if (fromKey.currentState!.validate()) {
-                        fromKey.currentState!.save();
-                        var currentDate = DateTime.now();
-                        String formattedDate =
-                            DateFormat.yMMMEd().format(currentDate);
-                        var notemodel = NoteModel(
-                            title: title!,
-                            content: content!,
-                            date: formattedDate,
-                            color: Colors.blue.value);
-                        BlocProvider.of<AddNotesCubit>(context)
-                            .addnotes(notemodel);
-                      } else {
-                        autovalidateMode = AutovalidateMode.always;
-                        setState(() {});
-                      }
+                      addAndValidate(context);
                     },
                     isLoading: state is AddNotesLoading ? true : false,
                   );
@@ -84,5 +69,24 @@ class _AddNoteFromState extends State<AddNoteFrom> {
         ),
       ),
     );
+  }
+
+  void addAndValidate(BuildContext context) {
+    if (fromKey.currentState!.validate()) {
+      fromKey.currentState!.save();
+      var currentDate = DateTime.now();
+      String formattedDate =
+          DateFormat.yMMMEd().format(currentDate);
+      var notemodel = NoteModel(
+          title: title!,
+          content: content!,
+          date: formattedDate,
+          color: Colors.blue.value);
+      BlocProvider.of<AddNotesCubit>(context)
+          .addnotes(notemodel);
+    } else {
+      autovalidateMode = AutovalidateMode.always;
+      setState(() {});
+    }
   }
 }
