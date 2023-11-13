@@ -6,12 +6,17 @@ import 'package:notes_app/models/note_model.dart';
 part 'notes_state.dart';
 
 class NotesCubit extends Cubit<NotesState> {
-  NotesCubit() : super(NotesInitial()); 
-   late List<NoteModel> notesModels;
+  NotesCubit() : super(NotesInitial());
+  late List<NoteModel> notesModels;
   displayNotes() {
-      var notes = Hive.box<NoteModel>(notesBox);
-      notesModels = notes.values.toList();
-      emit(NotesSuccess());
-    
+    var notes = Hive.box<NoteModel>(notesBox);
+    notesModels = notes.values.toList();
+    emit(NotesSuccess());
+  }
+
+  isEmpty() {
+    if (notesModels.isEmpty) {
+      emit(NotesEmpty());
+    }
   }
 }

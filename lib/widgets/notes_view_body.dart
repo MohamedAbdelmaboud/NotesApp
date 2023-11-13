@@ -23,8 +23,6 @@ class _NotesViewBodyState extends State<NotesViewBody> {
 
   @override
   Widget build(BuildContext context) {
-    List<NoteModel> notesModels =
-        BlocProvider.of<NotesCubit>(context).notesModels;
     return SafeArea(
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
@@ -36,7 +34,7 @@ class _NotesViewBodyState extends State<NotesViewBody> {
             ),
             BlocBuilder<NotesCubit, NotesState>(
               builder: (context, state) {
-                if (state is NotesInitial || notesModels.isEmpty) {
+                if (state is NotesEmpty) {
                   return const NoNotesBody();
                 } else if (state is NotesSuccess) {
                   return const NotesListView();

@@ -11,19 +11,26 @@ class NotesListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<NoteModel> notesModels =
+    
+    return BlocBuilder<NotesCubit, NotesState>(
+      builder: (context, state) {
+        List<NoteModel> notesModels =
         BlocProvider.of<NotesCubit>(context).notesModels;
-    return Expanded(
-      child: ListView.separated(
-        physics: const BouncingScrollPhysics(),
-        itemCount: notesModels.length,
-        separatorBuilder: (BuildContext context, int index) {
-          return const Padding(padding: EdgeInsets.symmetric(vertical: 8));
-        },
-        itemBuilder: (BuildContext context, int index) {
-          return  NoteItem(noteModel: notesModels[index],);
-        },
-      ),
+        return Expanded(
+          child: ListView.separated(
+            physics: const BouncingScrollPhysics(),
+            itemCount: notesModels.length,
+            separatorBuilder: (BuildContext context, int index) {
+              return const Padding(padding: EdgeInsets.symmetric(vertical: 8));
+            },
+            itemBuilder: (BuildContext context, int index) {
+              return NoteItem(
+                noteModel: notesModels[index],
+              );
+            },
+          ),
+        );
+      },
     );
   }
 }
