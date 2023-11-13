@@ -7,7 +7,7 @@ part 'notes_state.dart';
 
 class NotesCubit extends Cubit<NotesState> {
   NotesCubit() : super(NotesInitial());
-  late List<NoteModel> notesModels;
+   List<NoteModel>? notesModels;
   displayNotes() {
     var notes = Hive.box<NoteModel>(notesBox);
     notesModels = notes.values.toList();
@@ -15,7 +15,7 @@ class NotesCubit extends Cubit<NotesState> {
   }
 
   isEmpty() {
-    if (notesModels.isEmpty) {
+    if (notesModels?.isEmpty ?? true) {
       emit(NotesEmpty());
     }
   }

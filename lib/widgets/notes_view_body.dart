@@ -17,6 +17,7 @@ class _NotesViewBodyState extends State<NotesViewBody> {
   @override
   void initState() {
     BlocProvider.of<NotesCubit>(context).displayNotes();
+    BlocProvider.of<NotesCubit>(context).isEmpty();
     super.initState();
   }
 

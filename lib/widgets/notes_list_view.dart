@@ -15,7 +15,7 @@ class NotesListView extends StatelessWidget {
     return BlocBuilder<NotesCubit, NotesState>(
       builder: (context, state) {
         List<NoteModel> notesModels =
-        BlocProvider.of<NotesCubit>(context).notesModels;
+        BlocProvider.of<NotesCubit>(context).notesModels!;
         return Expanded(
           child: ListView.separated(
             physics: const BouncingScrollPhysics(),

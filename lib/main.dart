@@ -17,9 +17,6 @@ void main() async {
   Hive.registerAdapter<NoteModel>(NoteModelAdapter());
   await Hive.openBox<NoteModel>(notesBox);
   runApp(const MyApp());
-  debugPrint(DateTime.now().toString());
-  // var x = Temp<int>(value: 5);
-  // print(x.value);
 }
 
 class MyApp extends StatelessWidget {
