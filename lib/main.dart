@@ -7,7 +7,6 @@ import 'package:notes_app/models/note_model.dart';
 import 'package:notes_app/simple_boc_observer.dart';
 import 'package:notes_app/views/edit_note_view.dart';
 import 'package:notes_app/views/notes_view.dart';
-import 'package:notes_app/views/test_view.dart';
 
 void main() async {
   Bloc.observer = MyBlocObserver();
@@ -32,7 +31,6 @@ class MyApp extends StatelessWidget {
         routes: {
           NotesView.id: (context) => const NotesView(),
           EditNoteView.id: (context) => const EditNoteView(),
-          TestView.id: (context) => const TestView()
         },
         debugShowCheckedModeBanner: false,
         theme: ThemeData(brightness: Brightness.dark),

@@ -15,68 +15,68 @@ class NoteItem extends StatelessWidget {
   final NoteModel noteModel;
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-        onTap: () {
-          Navigator.pushNamed(context, EditNoteView.id, arguments: noteModel);
-        },
-        child: Slidable(
-          key: UniqueKey(),
-          startActionPane: ActionPane(
-            motion: const ScrollMotion(),
-            dismissible: DismissiblePane(onDismissed: () {
+    return Slidable(
+      key: UniqueKey(),
+      startActionPane: ActionPane(
+        motion: const ScrollMotion(),
+        dismissible: DismissiblePane(onDismissed: () {
+          onDismissed(context);
+        }),
+        children: [
+          SlidableAction(
+            onPressed: (context) {
               onDismissed(context);
-            }),
-            children: [
-              SlidableAction(
-                onPressed: (context) {
-                  onDismissed(context);
-                },
-                backgroundColor: const Color(0xFFFE4A49),
-                foregroundColor: Colors.white,
-                icon: Icons.delete,
-                label: 'Delete',
-              ),
-            ],
+            },
+            backgroundColor: const Color(0xFFFE4A49),
+            foregroundColor: Colors.white,
+            icon: Icons.delete,
+            label: 'Delete',
           ),
-          child: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 22, vertical: 22),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(16),
-              color: Color(noteModel.color),
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                ListTile(
-                  title: CustomText(noteModel.title, fontSize: 20),
-                  subtitle: Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 10.0),
-                    child: CustomText(
-                      noteModel.content,
-                      fontSize: 18,
-                      fontWeight: FontWeight.w500,
-                      color: Colors.black.withOpacity(0.6),
-                    ),
-                  ),
-                  trailing: IconButton(
-                    onPressed: () {},
-                    icon: const FaIcon(
-                      FontAwesomeIcons.trash,
-                      color: Colors.black,
-                    ),
-                  ),
-                  contentPadding: const EdgeInsets.all(0),
-                ),
-                CustomText(
-                  noteModel.date,
-                  fontSize: 16,
-                  fontWeight: FontWeight.w400,
+        ],
+      ),
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 22, vertical: 22),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(16),
+          color: Color(noteModel.color),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            ListTile(
+              title: CustomText(noteModel.title, fontSize: 20),
+              subtitle: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 10.0),
+                child: CustomText(
+                  noteModel.content,
+                  fontSize: 18,
+                  fontWeight: FontWeight.w500,
                   color: Colors.black.withOpacity(0.6),
-                )
-              ],
+                ),
+              ),
+              trailing: IconButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, EditNoteView.id,
+                      arguments: noteModel);
+                },
+                icon: const Icon(
+                  Icons.edit_document,
+                  color: Colors.black,
+                  size: 35,
+                ),
+              ),
+              contentPadding: const EdgeInsets.all(0),
             ),
-          ),
-        ));
+            CustomText(
+              noteModel.date,
+              fontSize: 16,
+              fontWeight: FontWeight.w400,
+              color: Colors.black.withOpacity(0.6),
+            )
+          ],
+        ),
+      ),
+    );
   }
 
   void onDismissed(BuildContext context) {
