@@ -19,3 +19,4 @@ void showSnackBar(BuildContext context, String text, bool isError) {
     ),
   );
 }
+

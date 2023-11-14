@@ -5,6 +5,7 @@ import 'package:notes_app/constants.dart';
 import 'package:notes_app/cubits/notes_cubit/notes_cubit.dart';
 import 'package:notes_app/models/note_model.dart';
 import 'package:notes_app/simple_boc_observer.dart';
+import 'package:notes_app/views/details_view.dart';
 import 'package:notes_app/views/edit_note_view.dart';
 import 'package:notes_app/views/notes_view.dart';
 
@@ -31,6 +32,7 @@ class MyApp extends StatelessWidget {
         routes: {
           NotesView.id: (context) => const NotesView(),
           EditNoteView.id: (context) => const EditNoteView(),
+          DetailsView.id:(context) => const DetailsView(),
         },
         debugShowCheckedModeBanner: false,
         theme: ThemeData(brightness: Brightness.dark),
