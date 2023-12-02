@@ -31,7 +31,6 @@ class NoteItem extends StatelessWidget {
             SlidableAction(
               onPressed: (context) {
                 onDismissed(context);
-                showSnackBar(context, 'Note deleted',true);
               },
               backgroundColor: const Color(0xFFFE4A49),
               foregroundColor: Colors.white,
@@ -88,6 +87,7 @@ class NoteItem extends StatelessWidget {
 
   void onDismissed(BuildContext context) {
     noteModel.delete();
+    showSnackBar(context, 'Note deleted !', true);
     BlocProvider.of<NotesCubit>(context).displayNotes();
     BlocProvider.of<NotesCubit>(context).isEmpty();
   }
