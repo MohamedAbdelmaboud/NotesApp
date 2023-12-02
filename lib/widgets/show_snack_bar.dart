@@ -19,23 +19,3 @@ void showSnackBar(BuildContext context, String text, bool isError) {
     ),
   );
 }
-void showSnackBarAction(BuildContext context, String text, bool isError,
-    void Function() onPressed) {
-  ScaffoldMessenger.of(context).showSnackBar(
-    SnackBar(
-      action: SnackBarAction(label: 'undo', onPressed: onPressed),
-      duration: const Duration(milliseconds: 700),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-      elevation: 10,
-      backgroundColor: isError ? Colors.red : Colors.green,
-      // behavior: SnackBarBehavior.floating,
-      content: Center(
-        child: CustomText(
-          text,
-          fontSize: 16,
-          color: Colors.white,
-        ).jetBrainsMono(),
-      ),
-    ),
-  );
-}

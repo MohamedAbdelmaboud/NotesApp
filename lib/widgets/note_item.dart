@@ -87,11 +87,8 @@ class NoteItem extends StatelessWidget {
   }
 
   void onDismissed(BuildContext context) {
-    NoteModel deleted = noteModel;
     noteModel.delete();
-    showSnackBarAction(context, 'Note deleted !', true, () {
-      BlocProvider.of<AddNotesCubit>(context).addnotes(deleted);
-    });
+    showSnackBar(context, 'Note deleted !', true);
     BlocProvider.of<NotesCubit>(context).displayNotes();
     BlocProvider.of<NotesCubit>(context).isEmpty();
   }
