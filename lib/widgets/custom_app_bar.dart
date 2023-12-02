@@ -16,7 +16,7 @@ class CustomAppBar extends StatelessWidget {
         children: [
           CustomText(
             text,
-            color: Colors.white,
+            color: Colors.black,
           ),
           CustomIcon(
             icon: icon,

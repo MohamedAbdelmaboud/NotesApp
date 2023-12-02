@@ -12,7 +12,7 @@ class DetailsView extends StatelessWidget {
         ModalRoute.of(context)!.settings.arguments as NoteModel;
     return Scaffold(
       appBar: AppBar(
-        backgroundColor:primaryColor,
+        backgroundColor:Color(noteModel.color),
         centerTitle: true,
         title: const CustomText(
           'Details',
@@ -29,8 +29,8 @@ class DetailsView extends StatelessWidget {
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
                         elevation: 10,
-                        backgroundColor:primaryColor,
-                        shadowColor:primaryColor,
+                        backgroundColor:Color(noteModel.color),
+                        shadowColor:Color(noteModel.color),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(5),
                         )),
@@ -48,7 +48,7 @@ class DetailsView extends StatelessWidget {
               ),
               CustomText(
                 noteModel.content,
-                color: Colors.white,
+                color: Colors.black,
                 fontWeight: FontWeight.w300,
                 maxLines: MediaQuery.of(context).size.height.toInt(),
               ),
