@@ -8,9 +8,6 @@ import 'package:notes_app/simple_boc_observer.dart';
 import 'package:notes_app/views/details_view.dart';
 import 'package:notes_app/views/edit_note_view.dart';
 import 'package:notes_app/views/notes_view.dart';
-import 'package:notes_app/views/profile.dart';
-import 'package:notes_app/views/test.dart';
-
 void main() async {
   Bloc.observer = MyBlocObserver();
 
@@ -30,13 +27,11 @@ class MyApp extends StatelessWidget {
     return BlocProvider(
       create: (context) => NotesCubit(),
       child: MaterialApp(
-        initialRoute: Profile.id,
+        initialRoute: NotesView.id,
         routes: {
           NotesView.id: (context) => const NotesView(),
           EditNoteView.id: (context) => const EditNoteView(),
           DetailsView.id: (context) => const DetailsView(),
-          Test.id: (context) => const Test(),
-          Profile.id: (context) => const Profile()
         },
         debugShowCheckedModeBanner: false,
         theme: ThemeData(brightness: Brightness.light),
@@ -44,3 +39,4 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+ 
