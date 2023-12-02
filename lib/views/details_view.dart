@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:notes_app/constants.dart';
 import 'package:notes_app/models/note_model.dart';
 import 'package:notes_app/widgets/custom_text.dart';
 
@@ -12,7 +11,7 @@ class DetailsView extends StatelessWidget {
         ModalRoute.of(context)!.settings.arguments as NoteModel;
     return Scaffold(
       appBar: AppBar(
-        backgroundColor:Color(noteModel.color),
+        backgroundColor: Color(noteModel.color),
         centerTitle: true,
         title: const CustomText(
           'Details',
@@ -29,8 +28,8 @@ class DetailsView extends StatelessWidget {
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
                         elevation: 10,
-                        backgroundColor:Color(noteModel.color),
-                        shadowColor:Color(noteModel.color),
+                        backgroundColor: Color(noteModel.color),
+                        shadowColor: Color(noteModel.color),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(5),
                         )),
@@ -46,10 +45,12 @@ class DetailsView extends StatelessWidget {
               const SizedBox(
                 height: 30,
               ),
-              CustomText(
+              SelectableText(
                 noteModel.content,
-                color: Colors.black,
-                fontWeight: FontWeight.w300,
+                style: const TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.w300,
+                ),
                 maxLines: MediaQuery.of(context).size.height.toInt(),
               ),
             ],

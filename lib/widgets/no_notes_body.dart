@@ -8,8 +8,14 @@ class NoNotesBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Image.asset('assets/images/notes.png',height: 400,),
-        const CustomText('Add your first note',color: Colors.white,)
+        Image.asset(
+          'assets/images/notes.png',
+          height: 400,
+        ),
+        const CustomText(
+          'Add your first note ✨',
+          color: Colors.black,
+        ).jetBrainsMono(),
       ],
     );
   }
